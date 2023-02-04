@@ -29,7 +29,12 @@ public class NoteService {
 
 
     public List<NoteDto> getNotes(String userUUID){
-        return noteRepository.findAllByUserUUID(userUUID).stream().map(Note::toDto).toList();
+        return noteRepository.findAllByUserUUID(userUUID).stream()
+                .filter(note -> note.getStatus() != NoteStatus.COMPLETED).map(Note::toDto).toList();
+    }
+
+    public List<NoteDto> getCompletedNotes(String userUUID){
+        return noteRepository.findAllByUserUUIDAndStatus(userUUID, NoteStatus.COMPLETED).stream().map(Note::toDto).toList();
     }
 
     public NoteDto addNote(NoteRequest request, String userUUID){

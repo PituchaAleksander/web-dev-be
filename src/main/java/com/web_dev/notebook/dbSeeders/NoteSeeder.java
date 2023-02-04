@@ -13,7 +13,7 @@ import java.util.List;
 @Component
 @Slf4j
 @AllArgsConstructor
-public class BookSeeder implements ISeeder {
+public class NoteSeeder implements ISeeder {
 
     NoteRepository noteRepository;
 

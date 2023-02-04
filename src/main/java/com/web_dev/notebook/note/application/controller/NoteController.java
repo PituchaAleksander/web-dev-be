@@ -27,6 +27,12 @@ public class NoteController {
         return noteService.getNotes(user.getUserUUID());
     }
 
+    @GetMapping("completed")
+    public List<NoteDto> getCompletedNotes(){
+        UserDetailsImpl user = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return noteService.getCompletedNotes(user.getUserUUID());
+    }
+
     @GetMapping("{userUUID}")
     public List<NoteDto> getNotesAdmin(@PathVariable String userUUID){
         return noteService.getNotes(userUUID);

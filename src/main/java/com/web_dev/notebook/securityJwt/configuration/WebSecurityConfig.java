@@ -77,6 +77,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()
                 .antMatchers("/api/note").hasRole("BASIC_USER")
+                .antMatchers(HttpMethod.GET,"/api/note/completed").hasRole("BASIC_USER")
                 .antMatchers(HttpMethod.PUT,"/api/note/{id}").hasRole("BASIC_USER")
                 .antMatchers(HttpMethod.PUT,"/api/note/status").hasRole("BASIC_USER")
                 .antMatchers(HttpMethod.DELETE,"/api/note/{id}").hasRole("BASIC_USER")

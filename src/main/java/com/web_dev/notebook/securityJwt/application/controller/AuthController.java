@@ -108,7 +108,7 @@ public class AuthController {
 	@GetMapping("users")
 	public List<User> getUsers() {
 		return userRepository.findAll().stream()
-				.filter(user -> user.getRoles().stream().findFirst().get().getName() == ERole.ROLE_BASIC_USER)
+				.filter(user -> user.getRoles().stream().findFirst().get().getName() == ERole.ROLE_BASIC_USER && user.getRoles().size() == 1)
 				.collect(Collectors.toList());
 	}
 }
